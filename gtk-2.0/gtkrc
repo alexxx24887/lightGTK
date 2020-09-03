@@ -1,0 +1,442 @@
+#Murrina-Industrial Colorscheme
+#
+#Author:
+#Piras <hernandezpiras@yahoo.fr>
+#
+# Credits to the kind people who worked on themes Industrial and Murrina.
+
+gtk-color-scheme = "bg_color: #f6f6f6\nfg_color: #000\nbase_color: #fff\ntext_color: #000\nselected_bg_color: #6484A4\nselected_fg_color: #fff\ntooltip_bg_color: #e5e5e5\ntooltip_fg_color: #000000"
+gtk-enable-animations = 1    # so that we can use pulsation on windows that need attention
+gtk-tooltip-timeout   = 750 # Tooltips appear too fast so I modify the delay to 0,750 sec.
+
+style "panelbg"
+{
+    xthickness = 3
+    ythickness = 1
+
+    bg_pixmap[NORMAL] = "3"   # 0 = flat, 1 = glassy, 2 = gradient, 3 = striped (*menubarstyle can match panelbg*), 4 = disable panel background image ;)
+}
+
+
+style "theme-default"
+{
+    GtkButton      ::default_border    = { 0, 0, 0, 0 }
+    GtkRange       ::trough_border     = 0
+    GtkPaned       ::handle_size       = 6
+    GtkRange       ::slider_width      = 15
+    GtkRange       ::stepper_size      = 15
+
+    GtkScrollbar   ::min_slider_length = 35
+    GtkCheckButton ::indicator_size    = 14
+    GtkMenuBar     ::internal-padding  = 0
+    GtkTreeView    ::expander_size     = 14
+    GtkExpander    ::expander_size     = 16
+    GtkScale       ::slider-length     = 24
+
+    # This is the pulsating rect that appears on newly launched apps
+    WnckTasklist   ::fade-overlay-rect    = 1
+    WnckTasklist   ::fade-opacity         = 0.6
+    WnckTasklist   ::fade-loop-time       = 1.5
+    WnckTasklist   ::fade-max-loops       = 50
+
+    NautilusIconContainer::highlight_alpha= 145 # Add transparency to Nautilus selection color.
+
+
+    xthickness = 1
+    ythickness = 1
+
+    bg[NORMAL]        = @bg_color
+    bg[PRELIGHT]      = shade (1.1, @bg_color)
+    bg[ACTIVE]        = shade (0.85, @bg_color)
+    bg[SELECTED]      = @selected_bg_color
+    bg[INSENSITIVE]   = shade (0.85, @bg_color)
+
+    fg[NORMAL]        = @fg_color
+    fg[PRELIGHT]      = @fg_color
+    fg[ACTIVE]        = @fg_color
+    fg[SELECTED]      = @selected_fg_color
+    fg[INSENSITIVE]   = mix (0.4, @fg_color, shade (0.85, @bg_color)) #shaded to bg[INSENSITIVE]
+
+    base[NORMAL]      = @base_color
+    base[PRELIGHT]    = @base_color #XXX
+    base[ACTIVE]      = mix (0.45, @selected_bg_color, @base_color) #b6c9cf
+    base[SELECTED]    = @selected_bg_color
+    base[INSENSITIVE] = mix (0.95, @base_color, @text_color)
+
+  text[NORMAL]      = @text_color
+  text[PRELIGHT]    = @text_color #XXX
+  text[ACTIVE]      = @selected_fg_color
+  text[SELECTED]    = @selected_fg_color
+  text[INSENSITIVE] = mix (0.5, @text_color, @base_color)
+
+    engine "murrine" {
+
+    #- glazestyle (change general look, i.e. buttons)
+    #    * 0 = flat hilight
+    #    * 1 = curved hilight
+    #    * 2 = concave style
+    #    * 3 = top curved hilight
+    #    * 4 = beryl/emerald style
+    glazestyle = 4
+
+    #- roundness (set roundness of buttons and other widgets)
+    #    * 0,1,2,3,4,5,6,7,8 = From flat till too rounded =).
+    #    Few notes more:
+    #    1.  concave style (glazestyle = 2) is supported just with roundness = 0,1.
+    #    2.  clearlooks-like default (nice) roundess is "3".
+    roundness = 5 # changed from 7
+
+    #- gradients (enable or disable gradients on all widgets)
+    #    * TRUE = enable gradients
+    #    * FALSE = disable gradients
+    gradients = TRUE
+
+    #- menubarstyle (change style of the menubar)
+    #    * 0 = flat
+    #    * 1 = glassy (it follows selected glazestyle)
+    #    * 2 = gradient
+    #    * 3 = striped
+    menubarstyle = 3
+
+    #- menuitemstyle (change look of menuitems)
+    #    * 0 = flat
+    #    * 1 = glassy (it follows selected glazestyle)
+    #    * 2 = striped
+    #menuitemstyle = 2
+
+    #- menubaritemstyle (change look of menubar items)
+    #    * 0 = menuitem look
+    #    * 1 = button look
+    menubaritemstyle = 1
+
+    #- listviewheaderstyle (change look of listviewheaders)
+    #    * 0 = flat
+    #    * 1 = glassy (it follows selected glazestyle)
+    #    * 2 = raised
+    listviewheaderstyle = 1  #changed from 2
+
+    #- listviewstyle (change separators of listviews)
+    #    * 0 = nothing (completely flat)
+    #    * 1 = dotted separators
+    listviewstyle = 1 #changed from 0
+
+    #- scrollbarstyle (enable extra features on scrollbars)
+    #    * 0 = nothing added
+    #    * 1 = circles
+    #    * 2 = handles
+    #    * 3 = diagonal stripes
+    #    * 4 = diagonal stripes and handles
+    #    * 5 = horizontal stripes
+    #    * 6 = horizontal stripes and handles
+    scrollbarstyle = 2 #changed from 0
+
+    #- animation (enable or disable animations on progressbars, radios and checks)
+    #    * TRUE = enable animation
+    #    * FALSE = disable animation
+    animation = TRUE
+
+    #- scrollbar_color (set the color of the scrollbar) [DEPRECATED]
+    #    * #HEX_COLOR = set custom color
+    #scrollbar_color = #6484A4
+
+    #- contrast (set the contrast of the theme)
+    #     * e.g. contrast = 0.8 for less contrast or more than 1.0 for more contrast on borders!
+    contrast = 0.75 # changed from 1.0
+
+    #- rgba (enabled or disabled)
+    rgba = TRUE
+
+    glowstyle = 0     # 0 = top, 1 = bottom, 2 = top and bottom, 3 = horizontal, 4 = centered glow
+    glow_shade = 1.9
+    gradient_shades     = {1.15,1.12,1.09,1.0}
+    highlight_shade     = 1.04  # set highlight amount for buttons or widgets
+    lightborder_shade   = 1.4   # sets lightborder amount for buttons or widgets
+    lightborderstyle    = 1     # 0 = lightborder on top side, 1 = lightborder on all sides
+    progressbarstyle    = 0     # 0 = flat, 1 = striped, 2 = cells
+    #profile             = MURRINE # engine profile options: CANDIDO, CLEARLOOKS, MIST, MURRINE, NODOKA
+    reliefstyle         = 2     # 0 = flat, 1 = inset, 2 = shadow
+    toolbarstyle        = 2     # 0 = flat, 1 = glassy, 2 = gradient
+
+
+  }
+}
+
+
+style "theme-panelbuttons" {
+
+    xthickness  = 3
+    ythickness  = 3
+
+    #GtkWidget::focus_padding = 3
+
+#    engine "murrine" {
+
+#    glowstyle = 2     # 0 = top, 1 = bottom, 2 = top and bottom, 3 = horizontal, 4 = centered glow
+#    glow_shade = 1.9
+#    gradient_shades     = {1.01,1.25,1.25,1.01}
+#    roundness = 4
+#
+#    }
+
+}
+
+style "theme-scale" = "theme-button" {
+
+  engine "murrine"
+
+  {
+
+  }
+
+}
+
+
+style "theme-wide" = "theme-default" {
+
+    xthickness = 2
+    ythickness = 2
+
+}
+
+
+style "theme-wider" = "theme-default" {
+
+    xthickness = 3
+    ythickness = 3
+
+}
+
+style "theme-entry" = "theme-wider"
+{
+
+}
+
+style "theme-button" = "theme-wider"
+{
+    bg[PRELIGHT]        = shade (1.1, @selected_bg_color)
+    bg[ACTIVE]          = @selected_bg_color
+}
+
+style "theme-notebook" = "theme-wide"
+{
+  bg[NORMAL]      = "#eeeeec"
+  bg[INSENSITIVE] = "#efefef"
+
+}
+
+style "theme-tasklist" = "theme-default"
+{
+  xthickness = 4
+  ythickness = 2
+}
+
+style "theme-menu" = "theme-default"
+{
+  xthickness = 1
+  ythickness = 1
+}
+
+# ======================= Global Menu Item  ===========================
+style "theme-menu-item" = "theme-default" {
+
+    xthickness = 0
+    ythickness = 2
+
+#  fg[NORMAL] = "#505050"
+#  text[PRELIGHT] = "#505050"
+
+    engine "murrine" {
+
+    glowstyle = 4     # 0 = top, 1 = bottom, 2 = top and bottom, 3 = horizontal, 4 = centered glow
+    glow_shade = 1.9
+#    gradient_shades     = {1.01,1.25,1.25,1.01}
+    roundness = 3
+
+    }
+}
+# =====================================================================
+
+style "theme-menubar" = "theme-default"
+{
+#  bg[NORMAL] = "#F6F6F6"
+#  fg[NORMAL] = "#505050"
+#  fg[ACTIVE] = "#505050"
+#  text[NORMAL] = "#505050"
+}
+
+style "theme-menubar-item"
+{
+    ythickness = 3
+#   fg[PRELIGHT] = "#505050"
+#   bg[PRELIGHT] = "#A5DD6C"
+}
+
+style "theme-tree" = "theme-default"
+{
+  xthickness = 2
+  ythickness = 2
+  bg[NORMAL]        = "#F6F6F6"
+}
+
+style "theme-frame-title" = "theme-default"
+{
+  fg[NORMAL] = "#404040"
+}
+
+style "theme-tooltips" = "theme-default"
+{
+  xthickness = 3
+  ythickness = 3
+  bg[NORMAL] = "#d9d9d9"
+}
+
+# =========================  Progressbar  =============================
+style "theme-progressbar" = "theme-wide" {
+
+    xthickness = 1
+    ythickness = 1
+
+    fg[PRELIGHT]  = "#444444"
+    bg[SELECTED]    = @selected_bg_color
+
+    engine "murrine" {
+
+    glowstyle           = 2     # 0 = top, 1 = bottom, 2 = top and bottom, 3 = horizontal, 4 = centered glow
+    glow_shade          = 1.99
+    #gradient_shades     = {1.00,1.75,1.75,1.00}
+    roundness           = 3
+
+    }
+}
+# =====================================================================
+
+
+style "theme-scrollbar" = "theme-default" {
+
+    bg[NORMAL] = @bg_color
+
+    #engine "clearlooks" {}
+
+}
+
+
+style "theme-combo" = "theme-button"
+{
+}
+
+style "theme-slab" = "theme-default"
+{
+    #bg[SELECTED] = "#F6F6F6"    # Outline
+    #bg[NORMAL] = "#F6F6F6"      # Base bg color
+    #bg[ACTIVE] = "#F6F6F6"      # Right side bg color
+    #fg[NORMAL] = "#768CA2"      # Left side caption text color
+    #fg[INSENSITIVE] = "#b6c9cf" # Right side caption text color
+}
+
+style "theme-slab-group" = "theme-default"
+{
+    #bg[SELECTED] = "#A5DD6C"  # Slab group text
+}
+
+style "metacity-frame"
+{
+  # Normal base color
+  #bg[NORMAL]  = "#bbbbbb"
+
+  # Unfocused title background color
+  #bg[INSENSITIVE]  = { 0.8, 0.8, 0.8 }
+
+  # Unfocused title text color
+  #fg[INSENSITIVE]  = { 1.55, 1.55, 1.55 }
+
+  # Focused icon color
+  #fg[NORMAL]  = { 0.2, 0.2, 0.2 }
+
+  # Focused title background color
+  #bg[SELECTED]  = "#A5DD6C"
+  #base[ACTIVE]  = "#f2f2f2"
+
+  # Focused title text color
+  #fg[SELECTED]  = "#ffffff"
+}
+
+
+# Fix create launcher bug fix
+style "launcher-fix"
+{
+  xthickness = 0
+  ythickness = 0
+
+    bg[NORMAL] = "#efebe7"
+}
+
+
+#widget "PanelDItemEditor"   style "launcher-fix"
+#class "*Applet*"                   style "panelbg"
+
+class "*Notif*"                    style "panelbg"
+class "*Manager*"                  style "panelbg"
+class "*Netstatus*"                 style "panelbg" # workaround for Netstatus Applet
+widget "*fast-user-switch*"         style "panelbg" # workaround for Fast User Switch applet
+
+class "*Panel*"             style "launcher-fix"
+widget "*PanelWidget*"              style "panelbg"
+widget "*PanelApplet*"              style "panelbg"
+class "PanelApp*"                   style "panelbg"
+class "PanelToplevel*"              style "panelbg"
+class "*Tray*"                      style "panelbg"
+class "Xfce*Panel*"                 style "panelbg"
+widget_class "*Xfce*Panel*"         style "panelbg"
+widget_class "*Mail*"               style "panelbg"
+widget_class "*notif*"              style "panelbg"
+#widget_class "*Notif*"              style "panelbg"
+
+
+class "MetaFrames"    style "metacity-frame"
+class "GtkWindow"      style "metacity-frame"
+
+
+# widget styles
+class "GtkWidget"      style "theme-default"
+class "GtkButton"      style "theme-button"
+class "GtkScale"       style "theme-scale"
+class "GtkCombo"       style "theme-button"
+class "GtkRange"       style "theme-wide"
+class "GtkFrame"       style "theme-wide"
+class "GtkMenu"        style "theme-menu"
+class "GtkEntry"       style "theme-entry"
+class "GtkMenuItem"    style "theme-menu-item"
+class "GtkNotebook"    style "theme-notebook"
+class "GtkProgressBar" style "theme-progressbar"
+class "*MenuBar*"      style "theme-menubar"
+class "GtkScrollbar" style "theme-scrollbar"
+
+
+widget_class "*MenuItem.*" style "theme-menu-item"
+widget_class "*MenuBar.*"  style "theme-menubar-item"
+
+
+# combobox stuff
+widget_class "*.GtkComboBox.GtkButton" style "theme-combo"
+widget_class "*.GtkCombo.GtkButton"    style "theme-combo"
+
+
+# tooltips stuff
+widget_class "*.tooltips.*.GtkToggleButton" style "theme-tasklist"
+widget "gtk-tooltips" style "theme-tooltips"
+
+
+# treeview stuff
+widget_class "*.GtkTreeView.GtkButton" style "theme-tree"
+widget_class "*.GtkCTree.GtkButton" style "theme-tree"
+widget_class "*.GtkList.GtkButton" style "theme-tree"
+widget_class "*.GtkCList.GtkButton" style "theme-tree"
+widget_class "*.GtkFrame.GtkLabel" style "theme-frame-title"
+
+
+# notebook stuff
+widget_class "*.GtkNotebook.*.GtkEventBox" style "theme-notebook"
+widget_class "*.GtkNotebook.*.GtkViewport" style "theme-notebook"
+
+widget_class "*Panel*GtkToggleButton"   style "theme-panelbuttons"
+

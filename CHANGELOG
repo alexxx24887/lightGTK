@@ -1,0 +1,11 @@
+
+1st June 2009
+Changes
+-> hilight_ratio removed from gtkrc file, not needed
+-> changed glazestyle to 4 ( from 1)
+-> new menuitem & progressbar look
+-> renamed to lightGTK (from Linux Mint 7 theme)
+
+Fixed
+-> "create launcher" background fixed by using the picture called "0" in the gtk-2.0 folder (making use of bg_pixmap[NORMAL]
+-> volume background does not inherit panel background (fixed with - class "*PanelApp*" style "panelbg")

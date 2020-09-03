@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=0.2
+Encoding=UTF-8
+Name=lightGTK
+Type=X-GNOME-Metatheme
+Comment=Linux Theme
+
+[X-GNOME-Metatheme]
+GtkTheme=lightGTK
+MetacityTheme=lightGTK
+IconTheme=Tango
